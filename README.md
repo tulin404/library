@@ -3,7 +3,6 @@ This project features a Web library that stores books of your preference, being 
 This is just a little project with Tailwind to get in touch with the Framework and Node/CI.
 # 🤖 Stack
 - HTML, JS
-- Tailwind
-- PostCSS, Autoprefixer
+- Tailwind v4 CLI
 - Local Storage
 - Github Actions (CI)
