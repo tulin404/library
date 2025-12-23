@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "npx postcss src/input.css -o dist/output.css",
-    "watch:css": "npx postcss src/input.css -o dist/output.css --watch",
+    "build:css": "tailwindcss -i src/input.css -o dist/output.css --minify",
+    "watch:css": "tailwindcss -i src/input.css -o dist/output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,11 +19,8 @@
     "url": "https://github.com/tulin404/library/issues"
   },
   "homepage": "https://github.com/tulin404/library#readme",
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.18",
-    "autoprefixer": "^10.4.23",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
     "tailwindcss": "^4.1.18"
   }
 }
