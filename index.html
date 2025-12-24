@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src="src/js/script.js" defer></script>
 </head>
-<body class="bg-secondary">
-    <div id="book-input-div" class="flex flex-col gap-3 absolute top-1/2 left-1/2 -translate-1/2 w-80 min-w-60 z-10 p-6 bg-primary shadow-sm rounded-md">
+<body class="bg-secondary transition-all duration-200">
+    <div id="book-input-div" class="flex flex-col gap-3 absolute scale-0 w-80 min-w-60 z-10 p-6 bg-primary shadow-sm rounded-md">
             <input type="text" class="input">
             <input type="text" class="input resize-none">
             <input type="number" min="0" value="0" class="input">
             <div id="input-btns" class="flex">
-                <button></button>
-                <button></button>
+                <button>Cancell</button>
+                <button>Add</button>
             </div>
     </div>
     <section id="header-wrapper" class="flex justify-between items-center w-screen bg-primary shadow-md p-4 md:px-20 md:py-8 lg:px-[8%]">
-        <p class="text-4xl font-[Nunito] font-bold">library.</p>
+        <p class="text-primary-font text-4xl font-[Nunito] font-bold">library.</p>
         <div id="btns-wrapper" class="flex gap-6 md:gap-12 items-center">
-            <button class="bg-secondary px-4 py-2 text-sm rounded-md md:text-md">+ Add Book</button>
+            <button class="bg-secondary text-primary-font px-4 py-2 text-sm rounded-md md:text-md hover:bg-secondary-hover transition-all duration-200">+ Add Book</button>
             <div id="theme-wrapper" class="relative size-8">
-                <button class="cursor-pointer absolute transition-transform duration-200 hover:-translate-y-1"><img src="public/moon.png" alt=""></button>
-                <button class="cursor-pointer absolute transition-transform duration-200 hover:-translate-y-1 hover:-rotate-45"><img src="public/sun.png" alt=""></button>
+                <button id="moon" class="absolute transition-all duration-300 opacity-0 -rotate-45 hover:-translate-y-1"><img src="public/moon.png" alt=""></button>
+                <button id="sun" class="absolute transition-all duration-300 opacity-0 hover:-translate-y-1 hover:-rotate-45"><img src="public/sun.png" alt=""></button>
             </div>
         </div>
     </section>
