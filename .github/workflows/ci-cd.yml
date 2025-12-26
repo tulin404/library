@@ -40,6 +40,11 @@ jobs:
          cp -r dist deploy/
          cp -r public deploy/
 
+      - name: List dist folder
+        run: |
+          ls -R deploy
+
+
       # ARTIFACT
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
