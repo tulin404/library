@@ -11,11 +11,11 @@ function checkTheme() {
 
 function checkThemeIcons() {
     if (localStorage.getItem('theme') === 'dark' || isBrowserDark() && localStorage.getItem('theme') === null) {
-        sun.classList.add('opacity-0', 'z-10', 'pointer-events-none');
-        moon.classList.remove('opacity-0', 'z-10', 'pointer-events-none');
+        sun.classList.add('theme-img-toggler');
+        moon.classList.remove('theme-img-toggler');
     } else if (localStorage.getItem('theme') === 'light' || !isBrowserDark() && localStorage.getItem('theme') === null) {
-        moon.classList.add('opacity-0', 'z-10', 'pointer-events-none');
-        sun.classList.remove('opacity-0', 'z-10', 'pointer-events-none');
+        sun.classList.remove('theme-img-toggler');
+        moon.classList.add('theme-img-toggler');
     };
 };
 

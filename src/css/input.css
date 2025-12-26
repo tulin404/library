@@ -28,7 +28,10 @@
 }
 
 @layer utilities {
-  .opacity-bg body > :not(#book-input-div) {
-    @apply opacity-60 pointer-events-none overflow-hidden;
-  }
+    .theme-img-toggler {
+        @apply opacity-0 z-10 pointer-events-none;
+    }
+    .opacity-bg body > :not(#book-input-div) {
+        @apply opacity-60 pointer-events-none overflow-hidden;
+    }
 }
