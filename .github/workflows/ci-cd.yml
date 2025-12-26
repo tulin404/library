@@ -11,14 +11,12 @@ permissions:
 
 jobs:
 
-  # =========================
-  # CI — Build & Verify
-  # =========================
   ci:
     name: CI (Build)
     runs-on: ubuntu-latest
 
     steps:
+      # GET CODE
       - name: Checkout source
         uses: actions/checkout@v4
 
@@ -33,28 +31,21 @@ jobs:
       - name: Build CSS
         run: npm run build:css
 
-      - name: List dist folder
-        run: |
-          ls -R dist
-
-
+        # JUST IN CASE
       - name: Prepare deploy folder
         run: |
          mkdir deploy
          cp index.html deploy/
+         cp src/js/script.js deploy/
          cp -r dist deploy/
-         cp -r public deploy/ || true
+         cp -r public deploy/
 
-      # CI OUTPUT → ARTIFACT
+      # ARTIFACT
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
             path: deploy
 
-
-  # =========================
-  # CD — Deploy
-  # =========================
   cd:
     name: CD (Deploy to Pages)
     needs: ci
