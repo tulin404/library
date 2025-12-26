@@ -36,6 +36,7 @@ jobs:
         run: |
          mkdir deploy
          cp index.html deploy/
+         mkdir -p deploy/src/js
          cp src/js/script.js deploy/src/js
          cp -r dist deploy/
          cp -r public deploy/
