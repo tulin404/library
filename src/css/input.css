@@ -13,7 +13,6 @@
     --color-secondary: oklch(0.25 0 360);
     --color-secondary-hover: oklch(0.3 0 360);
     --color-primary-font: oklch(0.9 0 360);
-    @apply transition-all duration-200
 }
 
 @layer components {
@@ -21,10 +20,15 @@
         @apply cursor-pointer
     }
     .input {
-        @apply w-full bg-secondary p-3 rounded-md outline-0;
+        @apply w-full bg-secondary p-3 rounded-md outline-0 text-primary-font;
+    }
+    .btn {
+        @apply bg-secondary text-primary-font px-4 py-2 text-sm rounded-md transition-all duration-200 hover:bg-secondary-hover;
     }
 }
 
-@utility active-input {
-    @apply scale-100 top-1/2 left-1/2 -translate-1/2;
+@layer utilities {
+  .opacity-bg body > :not(#book-input-div) {
+    @apply opacity-60 pointer-events-none overflow-hidden;
+  }
 }

@@ -47,3 +47,21 @@ moon.addEventListener('click', () => {
     localStorage.setItem('theme', 'light');
     checkTheme();
 });
+
+// ADD BOOK
+
+const addBtn = document.getElementById('add-btn');
+const cancelBtn = document.getElementById('cancell-btn');
+const bookInput = document.getElementById('book-input-div');
+
+addBtn.addEventListener('click', inputOpenClose);
+cancelBtn.addEventListener('click', inputOpenClose);
+
+function inputOpenClose() {
+    bookInput.classList.toggle('scale-0');
+    document.documentElement.classList.toggle('opacity-bg');
+};
+
+// SUBMIT BOOK
+const subBtn = document.getElementById('sub-btn');
+
