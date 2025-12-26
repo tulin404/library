@@ -33,14 +33,19 @@ jobs:
       - name: Build CSS
         run: npm run build:css
 
+      - name: Prepare deploy folder
+        run: |
+         mkdir deploy
+         cp index.html deploy/
+         cp -r dist deploy/
+         cp -r public deploy/ || true
+
       # CI OUTPUT → ARTIFACT
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            index.html
-            dist/
-            public/
+            path: deploy
+
 
   # =========================
   # CD — Deploy
