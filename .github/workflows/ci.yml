@@ -33,6 +33,11 @@ jobs:
       - name: Build CSS
         run: npm run build:css
 
+      - name: List dist folder
+        run: |
+          ls -R dist
+
+
       - name: Prepare deploy folder
         run: |
          mkdir deploy
