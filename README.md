@@ -4,5 +4,6 @@ This is just a little project with Tailwind to get in touch with the Framework a
 # 🤖 Stack
 - HTML, JS
 - Tailwind v4 CLI
+- Nodejs
 - Local Storage
-- Github Actions (CI)
+- Github Pages and Github Actions (CI/CD)
