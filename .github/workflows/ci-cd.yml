@@ -41,7 +41,8 @@ jobs:
          cp -r dist deploy/
          cp -r public deploy/
 
-      - name: List dist folder
+        #  DEBUG (check artifact for correct linking)
+      - name: List deploy folder
         run: |
           ls -R deploy
 

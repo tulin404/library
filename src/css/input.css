@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: oklch(0.9 0 360);
-    --color-secondary: oklch(0.85 0 360);
-    --color-secondary-hover: oklch(0.8 0 360);
+    --color-primary: oklch(0.95 0 360);
+    --color-secondary: oklch(0.9 0 360);
+    --color-secondary-hover: oklch(0.85 0 360);
     --color-primary-font: oklch(0.2 0 360);
 }
 
@@ -35,3 +35,18 @@
         @apply opacity-60 pointer-events-none overflow-hidden;
     }
 }
+
+@keyframes invalid {
+        25% {
+            transform: translateX(-4px);
+        }
+        50% {
+            transform: translateX(8px);
+        }
+        75% {
+            transform: translateX(-4px);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }

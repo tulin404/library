@@ -12,9 +12,9 @@
 </head>
 <body class="bg-secondary transition-all duration-200">
     <div id="book-input-div" class="flex flex-col gap-3 text-primary-font absolute scale-0 top-1/2 left-1/2 -translate-1/2 w-80 min-w-60 z-10 p-6 bg-primary shadow-sm rounded-md transition-all duration-200">
-            <input type="text" placeholder="Title" class="input">
-            <input type="text" placeholder="Author" class="input resize-none">
-            <input type="number" placeholder="Pages" min="0" class="input">
+            <input required id="title-input" type="text" placeholder="Title" class="input">
+            <input required id="author-input" type="text" placeholder="Author" class="input resize-none">
+            <input required id="pages-input" type="number" placeholder="Pages" min="0" class="input">
             <div id="input-btns" class="flex justify-between">
                 <button id="cancell-btn" class="btn md:text-md">Cancell</button>
                 <button id="sub-btn" class="btn md:text-md">Add</button>
@@ -30,8 +30,7 @@
             </div>
         </div>
     </section>
-    <section id="books-grid" class="min-w-full px-16 py-8 grid grid-cols-[repeat(auto-fit,minmax(200px,0.9fr))]">
-        
+    <section id="books-grid" class="justify-around min-w-full px-16 py-8 grid grid-cols-[repeat(auto-fit,minmax(200px,400px))]">
     </section>
 </body>
 </html>
