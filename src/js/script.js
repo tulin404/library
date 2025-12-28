@@ -106,13 +106,14 @@ function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.isRead = false;
 };
 
 function checkValidity() {
     if (titleInput.checkValidity() && authorInput.checkValidity() && pagesInput.checkValidity()) {
         return true;
     } else {
-        return false
+        return false;
     };
 };
 
