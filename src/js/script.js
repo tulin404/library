@@ -146,7 +146,7 @@ function createBookDiv(id, title, author, pages) {
     const booksGrid = document.getElementById('books-grid');
 
     const bookWrapper = document.createElement('div');
-    bookWrapper.classList.add('flex', 'flex-col', 'text-center', 'rounded-md', 'px-6', 'py-4', 'bg-primary', 'shadow-md', 'gap-4');
+    bookWrapper.classList.add('book-wrapper', 'flex', 'flex-col', 'text-center', 'rounded-md', 'px-6', 'py-4', 'bg-primary', 'shadow-md', 'gap-4');
     bookWrapper.dataset.id = id;
     booksGrid.prepend(bookWrapper);
     bookWrapper.innerHTML = `
