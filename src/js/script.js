@@ -100,6 +100,25 @@ let booksArray = checkBooksArray();
 
 subBtn.addEventListener('click', subBook);
 
+function subBook() {
+    if (checkValidity()) {
+    const title = titleInput.value;
+    const author = authorInput.value;
+    const pages = pagesInput.value;
+    
+    const newBook = new Book(title, author, pages);
+    updateStorage(newBook);
+    createBookDiv(newBook.id, newBook.title, newBook.author, newBook.pages);
+
+
+    inputOpenClose();
+    } else {
+        isValid(titleInput);
+        isValid(authorInput);
+        isValid(pagesInput);
+    };
+};
+
 // CONSTRUCTOR
 function Book(title, author, pages) {
     this.id = booksArray.length + 1;
@@ -109,6 +128,7 @@ function Book(title, author, pages) {
     this.isRead = false;
 };
 
+// HELPERS FOR THE SUB FUNCTION
 function checkValidity() {
     if (titleInput.checkValidity() && authorInput.checkValidity() && pagesInput.checkValidity()) {
         return true;
@@ -145,26 +165,7 @@ function createBookDiv(id, title, author, pages) {
     </div>`
 };
 
-function subBook() {
-    if (checkValidity()) {
-    const title = titleInput.value;
-    const author = authorInput.value;
-    const pages = pagesInput.value;
-    
-    const newBook = new Book(title, author, pages);
-    updateStorage(newBook);
-    createBookDiv(newBook.id, newBook.title, newBook.author, newBook.pages);
-
-
-    inputOpenClose();
-    } else {
-        isValid(titleInput);
-        isValid(authorInput);
-        isValid(pagesInput);
-    };
-};
-
-// CREATE STORED BOOKS
+// CREATE STORED BOOKS (window load)
 function createStoredBooks() {
     const storedBooks = JSON.parse(localStorage.getItem('books'));
     storedBooks.forEach(book => {
