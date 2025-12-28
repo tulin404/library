@@ -3,6 +3,7 @@ const sun = document.getElementById('sun');
 const moon = document.getElementById('moon');
 
 window.addEventListener('load', checkTheme);
+window.addEventListener('load', createStoredBooks);
 
 function checkTheme() {
     checkStorage();
@@ -86,9 +87,26 @@ pagesInput.addEventListener('input', () => isValid(pagesInput));
 const subBtn = document.getElementById('sub-btn');
 const booksGrid = document.getElementById('books-grid');
 
-let booksArray = [];
+// DYNAMICALLY UPDATES BOOKSARRAY
+function checkBooksArray() {
+    if (localStorage.getItem('books') !== null) {
+        return (JSON.parse(localStorage.getItem('books')))
+    } else {
+        return ([]);
+    };
+};
+
+let booksArray = checkBooksArray();
 
 subBtn.addEventListener('click', subBook);
+
+// CONSTRUCTOR
+function Book(title, author, pages) {
+    this.id = booksArray.length + 1;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+};
 
 function checkValidity() {
     if (titleInput.checkValidity() && authorInput.checkValidity() && pagesInput.checkValidity()) {
@@ -98,18 +116,19 @@ function checkValidity() {
     };
 };
 
-function subBook() {
-    if (checkValidity()) {
-    const title = titleInput.value;
-    const author = authorInput.value;
-    const pages = pagesInput.value;
+function updateStorage (element) {
+    booksArray.unshift(element);
+    localStorage.setItem('books', JSON.stringify(booksArray));
+};
+
+function createBookDiv(title, author, pages) {
     const booksGrid = document.getElementById('books-grid');
 
     const bookWrapper = document.createElement('div');
     bookWrapper.classList.add('flex', 'flex-col', 'text-center', 'rounded-md', 'px-6', 'py-4', 'bg-primary', 'shadow-md', 'gap-4')
-    booksGrid.appendChild(bookWrapper);
+    booksGrid.prepend(bookWrapper);
     bookWrapper.innerHTML = `
-    <div id="info-wrapper">
+    <div id="info-wrapper" class="text-primary-font">
         <div id="book-title" class="font-semibold text-2xl">${title}</div>
         <div id="book-author">${author}</div>
         <div id="book-pages" class="text-[15px]">${pages}</div>
@@ -122,6 +141,18 @@ function subBook() {
                 Remove
             </button>
     </div>`
+};
+
+function subBook() {
+    if (checkValidity()) {
+    const title = titleInput.value;
+    const author = authorInput.value;
+    const pages = pagesInput.value;
+    
+    const newBook = new Book(title, author, pages);
+    updateStorage(newBook);
+    createBookDiv(newBook.title, newBook.author, newBook.pages);
+
 
     inputOpenClose();
     } else {
@@ -129,4 +160,12 @@ function subBook() {
         isValid(authorInput);
         isValid(pagesInput);
     };
+};
+
+// CREATE STORED BOOKS
+function createStoredBooks() {
+    const storedBooks = JSON.parse(localStorage.getItem('books'));
+    storedBooks.forEach(book => {
+        createBookDiv(book.title, book.author, book.pages);
+    });
 };
