@@ -156,10 +156,10 @@ function createBookDiv(id, title, author, pages) {
         <div id="book-pages" class="text-[15px]">${pages}</div>
     </div>
     <div id="btns-wrapper" class="text-xl flex flex-col items-center gap-2">
-            <button id="read-btn" class="w-[80%] bg-green-400 text-green-100 py-0.5 rounded-md">
-                Read
+            <button id="read-btn" class="w-[80%] transition-colors duration-200 bg-red-400 text-red-100 py-0.5 rounded-md hover:bg-red-600">
+                Not Read
             </button>
-            <button id="remove-btn" class="w-[80%] bg-red-400 text-red-100 py-0.5 rounded-md">
+            <button id="remove-btn" class="w-[80%] transition-colors duration-200 bg-secondary text-primary-font py-0.5 rounded-md hover:bg-secondary-hover">
                 Remove
             </button>
     </div>`
@@ -169,6 +169,59 @@ function createBookDiv(id, title, author, pages) {
 function createStoredBooks() {
     const storedBooks = JSON.parse(localStorage.getItem('books'));
     storedBooks.forEach(book => {
-        createBookDiv(book.title, book.author, book.pages);
+        createBookDiv(book.id, book.title, book.author, book.pages);
     });
+};
+
+// REMOVE
+window.addEventListener('click', (e) => {
+    if (e.target.id === 'remove-btn') {
+        removeFromStorage(e);
+    };
+})
+
+function removeFromStorage(e) {
+    const wrapper = e.target.closest('.book-wrapper');
+    const id = wrapper.dataset.id;
+    // FRONT
+    wrapper.remove();
+    // BACK
+    const elementIndex = booksArray.findIndex(book => book.id = id);
+    booksArray.splice(elementIndex, 1);
+    localStorage.setItem('books', JSON.stringify(booksArray));
+};
+
+// READ
+window.addEventListener('click', (e) => {
+    if (e.target.id === 'read-btn') {
+        read(e);
+    };
+});
+
+function read(e) {
+    const btn = e.target;
+    const wrapper = e.target.closest('.book-wrapper');
+    const id = wrapper.dataset.id;
+    const bookTarget = booksArray.find(book => book.id === Number(id));
+    if (bookTarget.isRead === false) {
+        btn.classList.toggle('bg-green-400');
+        btn.classList.toggle('bg-red-400');
+        btn.classList.toggle('hover:bg-green-600');
+        btn.classList.toggle('hover:bg-red-600');
+        btn.classList.toggle('text-green-100');
+        btn.classList.toggle('text-red-100');
+        bookTarget.isRead = true;
+        btn.innerText = 'Read';
+        localStorage.setItem('books', JSON.stringify(booksArray));
+    } else {
+        btn.classList.toggle('bg-green-400');
+        btn.classList.toggle('bg-red-400');
+        btn.classList.toggle('hover:bg-green-600');
+        btn.classList.toggle('hover:bg-red-600');
+        btn.classList.toggle('text-green-100');
+        btn.classList.toggle('text-red-100');
+        bookTarget.isRead = false;
+        btn.innerText = 'Not Read';
+        localStorage.setItem('books', JSON.stringify(booksArray));
+    };
 };
